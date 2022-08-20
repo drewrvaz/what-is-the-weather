@@ -1,6 +1,7 @@
 :root {
   --white: white;
   --navy: navy;
+  --black: black;
 }
 
 * {
@@ -16,7 +17,7 @@ h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
-p {
+p, ul {
   font-family: 'Oswald', sans-serif;
 }
 
@@ -28,5 +29,11 @@ p {
 #searchBtn {
   color: var(--white);
   background-color: var(--navy);
-  margin: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+#todaysWeather {
+  outline: solid 1px var(--black);
+  padding: 10px
 }
