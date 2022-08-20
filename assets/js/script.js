@@ -9,7 +9,7 @@ $(document).ready(function() {
   }
 })
 
-$("#searchBtn").on("click", function(event) {
+$("#searchBtn").on("submit", function(event) {
   event.preventDefault();
   var city = $("#search-city").val();
   if (city === "") {
