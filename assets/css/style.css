@@ -1,3 +1,12 @@
+:root {
+  --white: white;
+  --navy: navy;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 h1, 
 h2, 
 h3, 
@@ -12,6 +21,6 @@ p {
 }
 
 .jumbotron {
-  color: white;
-  background-color: navy;
+  color: var(--white);
+  background-color: var(--navy);
 }
