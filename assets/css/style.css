@@ -1,7 +1,6 @@
 :root {
   --white: white;
   --navy: navy;
-  --black: black;
 }
 
 * {
@@ -38,7 +37,7 @@ p {
 }
 
 #todaysWeather {
-  outline: solid 1px var(--black);
+  outline: solid 1px var(--navy);
   padding: 10px
 }
 
