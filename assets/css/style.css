@@ -21,6 +21,10 @@ p, ul {
   font-family: 'Oswald', sans-serif;
 }
 
+p {
+  font-size: small;
+}
+
 .jumbotron {
   color: var(--white);
   background-color: var(--navy);
