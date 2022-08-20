@@ -24,3 +24,9 @@ p {
   color: var(--white);
   background-color: var(--navy);
 }
+
+#searchBtn {
+  color: var(--white);
+  background-color: var(--navy);
+  margin: 5px;
+}
