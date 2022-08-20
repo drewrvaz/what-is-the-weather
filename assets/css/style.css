@@ -41,3 +41,9 @@ p {
   outline: solid 1px var(--black);
   padding: 10px
 }
+
+.list-of-cities {
+  outline: var(--navy);
+  background-color: var(--white);
+  color: var(--navy);
+}
