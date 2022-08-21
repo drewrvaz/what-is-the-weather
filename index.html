@@ -19,6 +19,7 @@
   </header>
 
   <main class="container container-fluid">
+     <!-- Created the search for city form here -->
     <div class="row">
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
@@ -29,69 +30,23 @@
               <button class="col-12" id="searchBtn">Search</button>
             </form>
           </div>
-          <div>
-            <ul id="list-of-cities">
-            
-            </ul>
+          <div id="past-cities">
+            <!-- Cities the user previously searche will append here -->
           </div>
         </div>
       </div>
+
       <div class="col-md-8">
-        <div class="row card" id="todaysWeather">
-          <div class="card">
-            <h5 class="cityName">City <span id="currentDate">(XX/XX/XXXX)</span></h5>
-              <p class="temparature">Temp: </p>
-              <p class="wind">Wind: </p>
-              <p class="humidity">Humidity: </p>
-              <p class="uvindex">UV Index: </p>
-          </div>    
+        <div class="row" id="todaysWeather">
+          <!-- Current weather data for the user's input will append here -->
+          
         </div>
         <div class="row">
           <h5>5-Day Forecast:</h5>
         </div>
-        <div class="row" id="futureCast">
-          <div class="card-deck">
-            <div class="card" style="width: 18.5rem;">
-              <div class="card-body">
-                <h5 class="date"></h5>
-                  <p class="temparature">Temp: </p>
-                  <p class="wind">Wind: </p>
-                  <p class="humidity">Humidity: </p>
-              </div>
-            </div>
-            <div class="card" style="width: 18.5rem;">
-              <div class="card-body">
-                <h5 class="date"></h5>
-                  <p class="temparature">Temp: </p>
-                  <p class="wind">Wind: </p>
-                  <p class="humidity">Humidity: </p>
-              </div>
-            </div>
-            <div class="card" style="width: 18.5rem;">
-              <div class="card-body">
-                <h5 class="date"></h5>
-                  <p class="temparature">Temp: </p>
-                  <p class="wind">Wind: </p>
-                  <p class="humidity">Humidity: </p>
-              </div>
-            </div>
-            <div class="card" style="width: 18.5rem;">
-              <div class="card-body">
-                <h5 class="date"></h5>
-                  <p class="temparature">Temp: </p>
-                  <p class="wind">Wind: </p>
-                  <p class="humidity">Humidity: </p>
-              </div>
-            </div>
-            <div class="card" style="width: 18.5rem;">
-              <div class="card-body">
-                <h5 class="date"></h5>
-                  <p class="temparature">Temp: </p>
-                  <p class="wind">Wind: </p>
-                  <p class="humidity">Humidity: </p>
-              </div>
-            </div>
-          </div>
+        <div class="row d-flex flex-row flex-wrap jusitify-content-between" id="futureCast">
+          <!-- 5 day forecast for user's input will append here -->
+
         </div>
       </div>
     </div>

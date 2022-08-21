@@ -41,7 +41,7 @@ p {
   padding: 10px
 }
 
-.list-of-cities {
+#past-cities {
   outline: var(--navy);
   background-color: var(--white);
   color: var(--navy);
