@@ -51,7 +51,7 @@ getCities.forEach(pastCity) {
 // console.log(cityList)
 
 function getWeather() {
-  currentCity = $("#search-city")
+  currentCity = $("#city-input")
   var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
   fetch(queryURL)
   .then(function (response) {
