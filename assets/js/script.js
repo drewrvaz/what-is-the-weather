@@ -27,19 +27,20 @@ $("#searchBtn").on("submit", function(event) {
 });
 
 function weatherAPI() {
-  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey + "&units=imperial";
   fetch(queryURL)
 }
 
 function getWeather() {
-  currentCity = $("#city-input")
-  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
-  console.log(queryURL)
+  weatherAPI()
   .then(function (response) {
     return response.json();
 })
   .then(function(data) {
-    console.log(data);
+    console.log(city);
+
+    var cityName = $("#cityName").text("Temp: " + tempF + " ºF");
+
   })
 }
 // const APIKey = "3ea4d2de1606fec8c25abcf7659af663";
