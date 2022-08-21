@@ -26,11 +26,15 @@ $("#searchBtn").on("submit", function(event) {
   showCity();
 });
 
+function weatherAPI() {
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+  fetch(queryURL)
+}
+
 function getWeather() {
   currentCity = $("#city-input")
   var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
   console.log(queryURL)
-  fetch(queryURL)
   .then(function (response) {
     return response.json();
 })
