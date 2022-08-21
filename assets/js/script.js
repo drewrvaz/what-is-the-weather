@@ -14,6 +14,30 @@ function savedCities() {
   localStorage.setItem("cities", JSON.stringify(cities))
   console.log(localStorage)
 }
+
+$("#searchBtn").on("submit", function(event) {
+  event.preventDefault();
+  city = $("#city-form").val();
+  cities = [];
+  cities.push(city);
+  
+  getWeather();
+  storedCities();
+  showCity();
+});
+
+function getWeather() {
+  currentCity = $("#city-input")
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+  console.log(queryURL)
+  fetch(queryURL)
+  .then(function (response) {
+    return response.json();
+})
+  .then(function(data) {
+    console.log(data);
+  })
+}
 // const APIKey = "3ea4d2de1606fec8c25abcf7659af663";
 // // var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
 // const city = $("#city-input").val();
@@ -36,14 +60,6 @@ function savedCities() {
 // //   ? JSON.parse(localStorage.getItem("search-city"))
 // //   : [];
 
-// // $("#searchBtn").on("submit", function(event) {
-// //   event.preventDefault();
-// //   cityStorage.push(cityInput.value);
-// //   localStorage.setItem("search-city", JSON.stringify(cityStorage));
-// //   listBuilder(cityInput.value);
-// //   cityInput.value = "";
-// // });
-
 // // var listBuilder = (text) => {
 // //   var pastCity = document.createElement("li");
 // //   pastCity.innerHTML = text;
@@ -54,19 +70,6 @@ function savedCities() {
 // // getCities.forEach(function()) {
 // //   listBuilder(pastCity)
 // // }
-
-// $("#searchBtn").on("submit", function(event) {
-//   event.preventDefault();
-//   // var city = $("#city-input").val();
-//   // if (city === "") {
-//   //    return(city);
-//   // }
-//   // cityList.push(city);
-//   // console.log("clicked!")
-
-//   getWeather();
-//   savedCities();
-// })
 
 // // console.log(cityList)
 
