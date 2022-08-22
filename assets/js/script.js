@@ -80,9 +80,50 @@ function getWeather() {
       }
     })
 
-    showWeather();
+    currentWeather();
     showFutureCast();
   })
+}
+
+function currentWeather() {
+  console.log(city);
+
+  var currentWeather = $("#todaysWeather");
+  var header = $("<div class='container'>");
+  var weatherDiv = $("<div class='container'>");
+
+  var cityEl = $("<h2");
+  cityEl.text(city);
+  currentWeather.empty();
+
+  currentDateEl = $("<h3>").text(currentDate.toString());
+  console.log(currentDateEl);
+
+  var weatherIcon = $("<img>").attr(src, weatherIconEl);
+  var headerText = $("<h3>").text(city + " " + currentDate.toString());
+  headerText.append(weatherIcon);
+  header.append(headerText);
+  $("#todaysWeather").append(header);
+
+  var temperatureEl = $("<p>").text("Temp: " + temperatureVal + " F ");
+  weatherDiv.append(temperatureEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(temperatureEl);
+
+  var humidityEl = $("<p>").text("Humidity: " + humidityVal + " % ");
+  weatherDiv.append(humidityEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(humidityEl);
+
+  var windSpeedEl = $("<p>").text("Wind: " + windSpeed + " MPH ");
+  weatherDiv.append(windSpeedEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(windSpeedEl);
+
+  var uvEl = $("<div>").text(uvIndex);
+  weatherDiv.append(uvEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(uvEl);
 }
 
 // var city = $("#city-input");
@@ -98,9 +139,8 @@ function getWeather() {
 //     var todaysWeather = $("#todaysWeather");
 
 //     // creating a city element and displaying it in html
-//     var cityEl = $("<h2")
-//     cityEl.text(city);
-//     todaysWeather.append(cityEl);
+//     
+   
 
 //     // get the date and display it 
 //     var currentCityDate = data.current.dt;
