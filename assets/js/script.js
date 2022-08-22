@@ -56,10 +56,10 @@ function getWeather() {
     temperatureVal = data.main.temp;
     humidityVal = data.main.humidity;
     windSpeed = data.wind.speed;
-    var latitude = data.coord.lat
-    var longitude = data.coord.lon
+    latitude = data.coord.lat
+    longitude = data.coord.lon
 
-    var uvAPIurl = "http://api.openweather.org/data/2.5/uvi?&APPID=" + APIKey + "&lat=" + latitude + "&lon" + longitude;
+    var uvAPIurl = "http://api.openweather.org/data/2.5/uvi?&lat=" + latitude + "&lon" + longitude + "&APPID=" + APIKey;
     fetch(uvAPIurl)
 
     .then(function(response) {
@@ -129,7 +129,7 @@ function currentWeather() {
 function showFutureCast() {
   city = $("#city-input").val();
 
-  var futureCastAPI = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&AAPID=" + APIKey;
+  var futureCastAPI = "http://api.openweathermap.org/data/2.5/forecast?lat" + latitude + "lon" + longitude + "&AAPID=" + APIKey;
   fetch(futureCastAPI)
   .then(function(response) {
     return response.json();
@@ -167,6 +167,6 @@ function showFutureCast() {
     card.append(cardDiv);
     cardDiv.append(textDiv);
     $(".card-deck").append(card);
-
   })
+  console.log(futureCastAPI)
 }
