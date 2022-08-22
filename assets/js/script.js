@@ -1,4 +1,4 @@
-const APIKey = "3ea4d2de1606fec8c25abcf7659af663";
+var APIKey = "3ea4d2de1606fec8c25abcf7659af663";
 var cities = [];
 var currentCity;
 
@@ -135,7 +135,7 @@ function showFutureCast() {
     return response.json();
   })
 
-  then(function(data) {
+  .then(function(data) {
     city = $("#city-input").val();
     var futureCast = data.list;
 
