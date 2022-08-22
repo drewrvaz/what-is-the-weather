@@ -129,7 +129,7 @@ function currentWeather() {
 function showFutureCast() {
   city = $("#city-input").val();
 
-  var futureCastAPI = "http://api.openweathermap.org/data/2.5/forecast?lat" + latitude + "lon" + longitude + "&AAPID=" + APIKey;
+  var futureCastAPI = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial" + "&AAPID=" + APIKey;
   fetch(futureCastAPI)
   .then(function(response) {
     return response.json();
