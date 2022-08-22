@@ -1,59 +1,95 @@
 const APIKey = "3ea4d2de1606fec8c25abcf7659af663";
-
-var city = $("#city-input");
-var searchBtn = $("#searchBtn");
-var pastCities = $("#past-cities");
-
+var cities = [];
 var currentCity;
 
-// Function to display the current weather for the user's chosen location, as well as the 5 day forecast for the same location
-function getWeather(data) {
-  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&APPID=" + APIKey + "&units=imperial";
+var tableBody = document.getElementById("list-of-cities")
+var searchHistory = JSON.parse(localStorage.getItem(cities))
+
+$(document).ready(function() {
+  if (cities !== null) {
+    cities = searchHistory || [];
+  }
+});
+
+function savedCities() {
+  localStorage.setItem("cities", JSON.stringify(cities));
+  console.log(localStorage);
+}
+ 
+$("#city-form").on("submit", function(event) {
+  event.preventDefault();
+  city = $("#city-form").val();
+  cities = [];
+  cities.push(city);
+  console.log("clicked")
+  
+  getWeather();
+  storedCities();
+  showCity();
+});
+
+function presentCity() {
+  var storedCities = JSON.parse(localStorage.getItem("cities")) || [];
+  var cityListEl = document.createElement("ul");
+  cityListEl.classList.add("list-unstyled");
+  cityListEl.classList.add("w-100");
+
+  for (var i = 0; i < storedCities.length; i++) {
+    var cityLiEl = document.createElement("li");
+    cityLiEl.innerHTML = "<button type='button' class='list-group-item list-group-item-action' attr='"+cities[i]+"'>" + cities[i] + "</button>";
+    cityListEl.appendChild(cityLiEl);
+  }
+  tableBody.appendChild(cityListEl);
+};
+
+function getWeather() {
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + APIKey;
   fetch(queryURL)
   .then(function(response) {
     return response.json();
   })
-  .then(function(data){
-    var todaysWeather = $("#todaysWeather");
 
-    var cityEl = $("<h2")
-    cityEl.text(currentCity);
-    todaysWeather.append(cityEl)
+  .then(function(data) {
+    currentDate = moment.unix(data.dt).format("1");
+    var weatherIcon = data.weather[0].icon;
+    weatherIconEl = "http://openweathermap.org/img/w/" + weatherIcon + ".png"
   })
 }
 
-$("#city-form").on("submit", function(event) {
-  event.preventDefault();
-  currentCity = $("#city-form").val();
-})
-// var cities = [];
+// var city = $("#city-input");
+// var searchBtn = $("#searchBtn");
+// var pastCities = $("#past-cities");
+
 // var currentCity;
 
-// var tableBody = document.getElementById("list-of-cities")
-// var searchHistory = JSON.parse(localStorage.getItem(cities))
+// // Function to display the current weather for the user's chosen location, as well as the 5 day forecast for the same location
 
-// $(document).ready(function() {
-//   if (cities !== null) {
-//     cities = searchHistory || [];
-//   }
-// });
+//   .then(function(data){
+//     // current conditions in the city
+//     var todaysWeather = $("#todaysWeather");
 
-// function savedCities() {
-//   localStorage.setItem("cities", JSON.stringify(cities))
-//   console.log(localStorage)
+//     // creating a city element and displaying it in html
+//     var cityEl = $("<h2")
+//     cityEl.text(city);
+//     todaysWeather.append(cityEl);
+
+//     // get the date and display it 
+//     var currentCityDate = data.current.dt;
+//     currentCityDate = moment().format("MM/DD/YYYY");
+//     var currentCityDateEl = $("<span>");
+//     currentCityDateEl.text($(currentCityDate));
+//     cityEl.append(currentCityDateEl);
+//   })
 // }
 
 // $("#city-form").on("submit", function(event) {
 //   event.preventDefault();
 //   currentCity = $("#city-form").val();
-//   cities = [];
-//   cities.push(currentCity);
 //   console.log("clicked")
-  
-//   getWeather();
-//   storedCities();
-//   showCity();
-// });
+
+//   getWeather()
+// })
+
 
 // function weatherAPI() {
 //   var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&APPID=" + APIKey + "&units=imperial";
