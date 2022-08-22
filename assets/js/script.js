@@ -166,7 +166,7 @@ function showFutureCast() {
     textDiv.append(futureHumidityEl);
     card.append(cardDiv);
     cardDiv.append(textDiv);
-    $("#futureCast").append(card);
+    $(".card-deck").append(card);
 
   })
 }
