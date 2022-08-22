@@ -53,6 +53,24 @@ function getWeather() {
     currentDate = moment.unix(data.dt).format("1");
     var weatherIcon = data.weather[0].icon;
     weatherIconEl = "http://openweathermap.org/img/w/" + weatherIcon + ".png"
+    var temperatureVal = data.main.temp;
+    humidityVal = data.main.humidity;
+    windSpeed = data.wind.speed;
+    var latitude = data.coord.lat
+    var longitude = data.coord.long
+
+    var uvAPIurl = "https://api.openweather.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" + latitude + "&long" + longitude;
+    fetch(uvAPIurl)
+
+    .then(function(response) {
+      return response.json();
+    })
+
+    .then(function(data) {
+      uvIndex = data.value;
+
+     
+    })
   })
 }
 
