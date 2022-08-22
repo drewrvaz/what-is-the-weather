@@ -1,16 +1,13 @@
 # what-is-the-weather
 
 ## Description
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+I wanted to build a website that could take information from a thrid party API adn tell me something. In this case the weather. This project allows me to look up the weather anywhere that Open Weather Maps' API allows me to go. I learned how to connect APIs to javascript. I also was bale to work more on my HTML, JQuery, CSS,a nd Bootstrap skills.
 
 ## Link to webpage
 Insert link here
 
 ## Usage
-Provide instructions and examples for use. Include screenshots as needed.
+Type the name of the city you would like to see the weather for in the search bar. click search and the weather data will be displayed. In the top right will be the current weather for that location. Underneath the current weather is the 5-Day forecast for the same location. Beneath the search bar, your past searches will be saved. You can click on one of your past searches and that location's weather information should pop up instead.
 
 ## Screenshot of Webpage
 Insert screenshot here
