@@ -16,9 +16,9 @@ function savedCities() {
   console.log(localStorage);
 }
  
-$("#city-form").on("submit", function(event) {
+$("#searchBtn").on("click", function(event) {
   event.preventDefault();
-  city = $("#city-form").val();
+  city = $("#city-input").val();
   cities = [];
   cities.push(city);
   console.log("clicked")
@@ -50,14 +50,14 @@ function getWeather() {
   })
 
   .then(function(data) {
-    currentDate = moment.unix(data.dt).format("1");
+    currentDate = moment.unix(data.dt).format("MM/DD/YYYY");
     var weatherIcon = data.weather[0].icon;
     weatherIconEl = "http://openweathermap.org/img/w/" + weatherIcon + ".png"
-    var temperatureVal = data.main.temp;
+    temperatureVal = data.main.temp;
     humidityVal = data.main.humidity;
     windSpeed = data.wind.speed;
     var latitude = data.coord.lat
-    var longitude = data.coord.long
+    var longitude = data.coord.lon
 
     var uvAPIurl = "https://api.openweather.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" + latitude + "&long" + longitude;
     fetch(uvAPIurl)
@@ -92,14 +92,14 @@ function currentWeather() {
   var header = $("<div class='container'>");
   var weatherDiv = $("<div class='container'>");
 
-  var cityEl = $("<h2");
+  var cityEl = $("<h2>");
   cityEl.text(city);
   currentWeather.empty();
 
   currentDateEl = $("<h3>").text(currentDate.toString());
   console.log(currentDateEl);
 
-  var weatherIcon = $("<img>").attr(src, weatherIconEl);
+  var weatherIcon = $("<img>").attr("src", weatherIconEl);
   var headerText = $("<h3>").text(city + " " + currentDate.toString());
   headerText.append(weatherIcon);
   header.append(headerText);
