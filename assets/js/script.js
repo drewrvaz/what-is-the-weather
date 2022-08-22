@@ -105,7 +105,7 @@ function currentWeather() {
   header.append(headerText);
   $("#todaysWeather").append(header);
 
-  var temperatureEl = $("<p>").text("Temp: " + temperatureVal + " F ");
+  var temperatureEl = $("<p>").text("Temp: " + temperatureVal + " ºF ");
   weatherDiv.append(temperatureEl);
   $("#todaysWeather").append(weatherDiv);
   console.log(temperatureEl);
@@ -139,14 +139,34 @@ function showFutureCast() {
     city = $("#city-input").val();
     var futureCast = data.list;
 
-    for (let i = 0; i < futureCast.length; i++) {
-      futureDate = moment.unix(futurecast[i].dt).format("MM/DD/YYYY");
+    for (let i = 0; i < 5; i++) {
+      futureDate = moment.add(i, "days").format("MM/DD/YYYY");
       futureWeatherIcon = data.list[i].weather[0].icon;
       futureWeatherIconEL = "http://openweathermap.org/img/w/" + futureWeatherIcon + ".png";
       futureHumidity = futureCast[i].main.humidity;
       futureTemp = futureCast[i].main.temp;
+      futureWindSpeed = futureCast[i].wind.speed
     }
 
-    
+    var card = $("<div class='card'>").addClass("futureCastCards");
+    var cardDiv = $("<div>").attr("class", "card-block")
+    var cardDate = $("<h6>").text(futureDate).addClass("pt-2");
+    var dateDiv = $("<div>").attr("class", "card-block")
+    var textDiv = $("<div>").attr("class", "card-text")
+    var imgEl = $("<img>").attr("src", futureWeatherIconEL);
+    var tempEl = $("<p>").text("Temp: " + futureTemp + " ºF")
+    var windEl = $("<p>").text("Wind: " + futureWindSpeed + " MPH")
+    var futureHumidityEl = $("<p>").text("Humidity " + futureHumidity + "%");
+
+    dateDiv.append(cardDate);
+    cardDiv.append(dateDiv);
+    textDiv.append(imgEl);
+    textDiv.append(tempEl);
+    textDiv.append(windEl);
+    textDiv.append(futureHumidityEl);
+    card.append(cardDiv);
+    cardDiv.append(textDiv);
+    $(".card-deck").append(card);
+
   })
 }

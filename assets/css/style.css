@@ -70,3 +70,8 @@ p {
   background-color: var(--white);
   color: var(--navy);
 }
+
+.futureCastCards {
+  background-color: var(--navy);
+  color: var(--white);
+}
