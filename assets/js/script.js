@@ -2,7 +2,7 @@ const APIKey = "3ea4d2de1606fec8c25abcf7659af663";
 var cities = [];
 var currentCity;
 
-var tableBody = document.getElementById("list-of-cities")
+var tableBody = document.getElementById("past-cities")
 var searchHistory = JSON.parse(localStorage.getItem(cities))
 
 $(document).ready(function() {
@@ -24,8 +24,8 @@ $("#searchBtn").on("click", function(event) {
   console.log("clicked")
   
   getWeather();
-  storedCities();
-  showCity();
+  savedCities();
+  presentCity();
 });
 
 function presentCity() {
@@ -154,19 +154,19 @@ function showFutureCast() {
     var dateDiv = $("<div>").attr("class", "card-block")
     var textDiv = $("<div>").attr("class", "card-text")
     var imgEl = $("<img>").attr("src", futureWeatherIconEL);
-    var tempEl = $("<p>").text("Temp: " + futureTemp + " ºF")
-    var windEl = $("<p>").text("Wind: " + futureWindSpeed + " MPH")
+    var futureTempEl = $("<p>").text("Temp: " + futureTemp + " ºF")
+    var futureWindEl = $("<p>").text("Wind: " + futureWindSpeed + " MPH")
     var futureHumidityEl = $("<p>").text("Humidity " + futureHumidity + "%");
 
     dateDiv.append(cardDate);
     cardDiv.append(dateDiv);
     textDiv.append(imgEl);
-    textDiv.append(tempEl);
-    textDiv.append(windEl);
+    textDiv.append(futureTempEl);
+    textDiv.append(futureWindEl);
     textDiv.append(futureHumidityEl);
     card.append(cardDiv);
     cardDiv.append(textDiv);
-    $(".card-deck").append(card);
+    $("#futureCast").append(card);
 
   })
 }
