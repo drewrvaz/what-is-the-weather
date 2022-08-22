@@ -59,7 +59,7 @@ function getWeather() {
     var latitude = data.coord.lat
     var longitude = data.coord.lon
 
-    var uvAPIurl = "https://api.openweather.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" + latitude + "&long" + longitude;
+    var uvAPIurl = "http://api.openweather.org/data/2.5/uvi?&APPID=" + APIKey + "&lat=" + latitude + "&lon" + longitude;
     fetch(uvAPIurl)
 
     .then(function(response) {
@@ -126,3 +126,27 @@ function currentWeather() {
   console.log(uvEl);
 }
 
+function showFutureCast() {
+  city = $("#city-input").val();
+
+  var futureCastAPI = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&AAPID=" + APIKey;
+  fetch(futureCastAPI)
+  .then(function(response) {
+    return response.json();
+  })
+
+  then(function(data) {
+    city = $("#city-input").val();
+    var futureCast = data.list;
+
+    for (let i = 0; i < futureCast.length; i++) {
+      futureDate = moment.unix(futurecast[i].dt).format("MM/DD/YYYY");
+      futureWeatherIcon = data.list[i].weather[0].icon;
+      futureWeatherIconEL = "http://openweathermap.org/img/w/" + futureWeatherIcon + ".png";
+      futureHumidity = futureCast[i].main.humidity;
+      futureTemp = futureCast[i].main.temp;
+    }
+
+    
+  })
+}
