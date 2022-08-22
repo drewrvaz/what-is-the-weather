@@ -69,8 +69,19 @@ function getWeather() {
     .then(function(data) {
       uvIndex = data.value;
 
-     
+      if(uvIndex <= 2) {
+          $("#todaysWeather").addClass("low")
+      } else if(2 < uvIndex <= 5) {
+        $("#todaysWeather").addClass("moderate")
+      } else if(5 < uvIndex <= 7) {
+        $("#todaysWeather").addClass("high")
+      } else if(uvIndex >= 8) {
+        $("#todaysWeather").addClass("extreme")
+      }
     })
+
+    showWeather();
+    showFutureCast();
   })
 }
 

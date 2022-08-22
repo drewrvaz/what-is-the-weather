@@ -41,6 +41,30 @@ p {
   padding: 10px
 }
 
+.low {
+  background-color: green;
+  border-radius: 3px;
+  color: var(--white);
+}
+
+.moderate {
+  background-color: yellow;
+  border-radius: 3px;
+  color: var(--white);
+}
+
+.high {
+  background-color: orange;
+  border-radius: 3px;
+  color: var(--white);
+}
+
+.extreme {
+  background-color: red;
+  border-radius: 3px;
+  color: var(--white);
+}
+
 #past-cities {
   outline: var(--navy);
   background-color: var(--white);
