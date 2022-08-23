@@ -15,6 +15,12 @@ function savedCities() {
   localStorage.setItem("cities", JSON.stringify(cities));
   console.log(localStorage);
 }
+
+function clearCity() {
+  $(".card-deck").empty();
+  $("#todaysWeather").empty();
+  // $("#past-cities").empty();
+}
  
 $("#searchBtn").on("click", function(event) {
   event.preventDefault();
@@ -23,6 +29,7 @@ $("#searchBtn").on("click", function(event) {
   cities.push(city);
   console.log("clicked")
   
+  clearCity();
   getWeather();
   savedCities();
   presentCity();
