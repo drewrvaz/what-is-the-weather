@@ -5,6 +5,7 @@ var city = "Detroit";
 var tableBody = document.getElementById("past-cities")
 var searchHistory = JSON.parse(localStorage.getItem(cities))
 
+//Function for the start of the page. Render's Detroit's current weather
 $(document).ready(function() {
   if (cities !== null) {
     cities = searchHistory || [];
@@ -12,16 +13,19 @@ $(document).ready(function() {
   getWeather(city);
 });
 
+// Function to save cities that the user searches into local storage
 function savedCities() {
   localStorage.setItem("cities", JSON.stringify(cities));
   console.log(localStorage);
 }
 
+// Function to clear city data when the user enters in a new city
 function clearCity() {
   $(".card-deck").empty();
   $("#todaysWeather").empty();
 }
- 
+
+// Event listener for the serach button
 $("#searchBtn").on("click", function(event) {
   event.preventDefault();
   city = $("#city-input").val();
@@ -35,6 +39,7 @@ $("#searchBtn").on("click", function(event) {
   presentCity();
 });
 
+// Event listener for the past seaches that the user has made
 $("main").delegate(".list-group-item", "click", function() {
   clearCity();
   city = $(this).text();
@@ -42,6 +47,7 @@ $("main").delegate(".list-group-item", "click", function() {
   console.log("clicked")
 })
 
+// Function that presents the cities that the user previously searched for
 function presentCity() {
   var storedCities = JSON.parse(localStorage.getItem("cities")) || [];
   var cityListEl = document.createElement("ul");
@@ -56,6 +62,7 @@ function presentCity() {
   tableBody.appendChild(cityListEl);
 };
 
+// Function that gets the weather from the searched city using Open Weather Map's API
 function getWeather() {
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + APIKey;
   fetch(queryURL)
@@ -73,6 +80,7 @@ function getWeather() {
     latitude = data.coord.lat
     longitude = data.coord.lon
 
+    // Searches the Open Weather Map API for the current UV Index for the user's input
     var uvAPIurl = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" + latitude + "&lon=" + longitude;
     fetch(uvAPIurl)
 
@@ -97,6 +105,7 @@ function getWeather() {
   })
 }  
 
+// Function to display the current weather for the user's input
 function currentWeather() {
   console.log(city);
 
@@ -140,8 +149,8 @@ function currentWeather() {
   console.log(uvEl);
 }
 
+// Function to show the future forecast for the user's input
 function showFutureCast() {
-  // city = $("#city-input").val();
 
   var futureCastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
   fetch(futureCastAPI)
@@ -182,5 +191,4 @@ function showFutureCast() {
       $(".card-deck").append(card);
     }
   })
-  console.log(futureCastAPI)
 }
