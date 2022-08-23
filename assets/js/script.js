@@ -83,12 +83,12 @@ function getWeather() {
     .then(function(data) {
       uvIndex = data.value;
 
-      if(uvIndex <= 3) {
-          $("#todaysWeather").addClass("low")
-      } else if(3 < uvIndex <= 7) {
-        $("#todaysWeather").addClass("moderate")
-      } else if(uvIndex > 7) {
-        $("#todaysWeather").addClass("extreme")
+      if(uvIndex <= 4) {
+        $("#UVIndex").addClass("low")
+      } else if(4 < uvIndex <= 8) {
+        $("#UVIndex").addClass("moderate")
+      } else if(uvIndex > 8) {
+        $("#UVIndex").addClass("extreme")
       }
 
       currentWeather();
@@ -103,6 +103,7 @@ function currentWeather() {
   var currentWeather = $("#todaysWeather");
   var header = $("<div class='container'>");
   var weatherDiv = $("<div class='container'>");
+  var uvIndexDiv = $("#UVIndex");
 
   var cityEl = $("<h2>");
   cityEl.text(city);
@@ -133,7 +134,8 @@ function currentWeather() {
   console.log(windSpeedEl);
 
   var uvEl = $("<p>").text("UV Index: " + uvIndex);
-  weatherDiv.append(uvEl);
+  uvIndexDiv.append(uvEl);
+  weatherDiv.append(uvIndexDiv);
   $("#todaysWeather").append(weatherDiv);
   console.log(uvEl);
 }
