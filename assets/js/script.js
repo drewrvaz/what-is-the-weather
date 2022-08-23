@@ -73,7 +73,7 @@ function getWeather() {
     latitude = data.coord.lat
     longitude = data.coord.lon
 
-    var uvAPIurl = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey + "lat=" + latitude + "&lon=" + longitude;
+    var uvAPIurl = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" + latitude + "&lon=" + longitude;
     fetch(uvAPIurl)
 
     .then(function(response) {
@@ -81,7 +81,7 @@ function getWeather() {
     })
 
     .then(function(data) {
-      var uvIndex = data.value;
+      uvIndex = data.value;
 
       if(uvIndex <= 3) {
           $("#todaysWeather").addClass("low")
@@ -132,10 +132,10 @@ function currentWeather() {
   $("#todaysWeather").append(weatherDiv);
   console.log(windSpeedEl);
 
-  // var uvEl = $("<div>").text(uvIndex);
-  // weatherDiv.append(uvEl);
-  // $("#todaysWeather").append(weatherDiv);
-  // console.log(uvEl);
+  var uvEl = $("<p>").text("UV Index: " + uvIndex);
+  weatherDiv.append(uvEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(uvEl);
 }
 
 function showFutureCast() {
