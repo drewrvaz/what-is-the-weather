@@ -66,6 +66,10 @@ p {
   color: var(--navy);
 }
 
+#futureCast {
+  padding: 10px;
+}
+
 .futureCastCards {
   background-color: var(--navy);
   color: var(--white);
