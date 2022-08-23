@@ -59,30 +59,69 @@ function getWeather() {
     latitude = data.coord.lat
     longitude = data.coord.lon
 
-    // var uvAPIurl = "http://api.openweather.org/data/2.5/uvi?lat=" + latitude + "&lon" + longitude + "&APPID=" + APIKey;
-    // fetch(uvAPIurl)
+    var uvAPIurl = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey + "lat=" + latitude + "&lon=" + longitude;
+    fetch(uvAPIurl)
 
-    // .then(function(response) {
-    //   return response.json();
-    // })
+    .then(function(response) {
+      return response.json();
+    })
 
-    // .then(function(data) {
-    //   var uvIndex = data.value;
+    .then(function(data) {
+      var uvIndex = data.value;
 
-    //   if(uvIndex <= 2) {
-    //       $("#todaysWeather").addClass("low")
-    //   } else if(2 < uvIndex <= 5) {
-    //     $("#todaysWeather").addClass("moderate")
-    //   } else if(5 < uvIndex <= 7) {
-    //     $("#todaysWeather").addClass("high")
-    //   } else if(uvIndex >= 8) {
-    //     $("#todaysWeather").addClass("extreme")
-    //   }
-    // })
+      if(uvIndex <= 2) {
+          $("#todaysWeather").addClass("low")
+      } else if(3 < uvIndex <= 6) {
+        $("#todaysWeather").addClass("moderate")
+      } else if(uvIndex >= 7) {
+        $("#todaysWeather").addClass("extreme")
+      }
 
-    currentWeather();
-    showFutureCast(city);
+      currentWeather();
+      showFutureCast();
   })
+  })
+}  
+
+function currentWeather() {
+  console.log(city);
+
+  var currentWeather = $("#todaysWeather");
+  var header = $("<div class='container'>");
+  var weatherDiv = $("<div class='container'>");
+
+  var cityEl = $("<h2>");
+  cityEl.text(city);
+  currentWeather.empty();
+
+  currentDateEl = $("<h3>").text(currentDate.toString());
+  console.log(currentDateEl);
+
+  var weatherIcon = $("<img>").attr("src", weatherIconEl);
+  var headerText = $("<h3>").text(city + " " + currentDate.toString());
+  headerText.append(weatherIcon);
+  header.append(headerText);
+  $("#todaysWeather").append(header);
+
+  var temperatureEl = $("<p>").text("Temp: " + temperatureVal + " ºF ");
+  weatherDiv.append(temperatureEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(temperatureEl);
+
+  var humidityEl = $("<p>").text("Humidity: " + humidityVal + " % ");
+  weatherDiv.append(humidityEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(humidityEl);
+
+  var windSpeedEl = $("<p>").text("Wind: " + windSpeed + " MPH ");
+  weatherDiv.append(windSpeedEl);
+  $("#todaysWeather").append(weatherDiv);
+  console.log(windSpeedEl);
+
+  // var uvEl = $("<div>").text(uvIndex);
+  // weatherDiv.append(uvEl);
+  // $("#todaysWeather").append(weatherDiv);
+  // console.log(uvEl);
 }
 
 function showFutureCast() {
@@ -129,45 +168,3 @@ function showFutureCast() {
   })
   console.log(futureCastAPI)
 }
-
-function currentWeather() {
-  console.log(city);
-
-  var currentWeather = $("#todaysWeather");
-  var header = $("<div class='container'>");
-  var weatherDiv = $("<div class='container'>");
-
-  var cityEl = $("<h2>");
-  cityEl.text(city);
-  currentWeather.empty();
-
-  currentDateEl = $("<h3>").text(currentDate.toString());
-  console.log(currentDateEl);
-
-  var weatherIcon = $("<img>").attr("src", weatherIconEl);
-  var headerText = $("<h3>").text(city + " " + currentDate.toString());
-  headerText.append(weatherIcon);
-  header.append(headerText);
-  $("#todaysWeather").append(header);
-
-  var temperatureEl = $("<p>").text("Temp: " + temperatureVal + " ºF ");
-  weatherDiv.append(temperatureEl);
-  $("#todaysWeather").append(weatherDiv);
-  console.log(temperatureEl);
-
-  var humidityEl = $("<p>").text("Humidity: " + humidityVal + " % ");
-  weatherDiv.append(humidityEl);
-  $("#todaysWeather").append(weatherDiv);
-  console.log(humidityEl);
-
-  var windSpeedEl = $("<p>").text("Wind: " + windSpeed + " MPH ");
-  weatherDiv.append(windSpeedEl);
-  $("#todaysWeather").append(weatherDiv);
-  console.log(windSpeedEl);
-
-  // var uvEl = $("<div>").text(uvIndex);
-  // weatherDiv.append(uvEl);
-  // $("#todaysWeather").append(weatherDiv);
-  // console.log(uvEl);
-}
-
