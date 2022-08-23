@@ -34,6 +34,13 @@ $("#searchBtn").on("click", function(event) {
   presentCity();
 });
 
+$("main").delegate(".list-group-item", "click", function() {
+  clearCity();
+  city = $(this).text();
+  getWeather()
+  console.log("clicked")
+})
+
 function presentCity() {
   var storedCities = JSON.parse(localStorage.getItem("cities")) || [];
   var cityListEl = document.createElement("ul");
@@ -85,7 +92,7 @@ function getWeather() {
 
       currentWeather();
       showFutureCast();
-  })
+    })
   })
 }  
 
