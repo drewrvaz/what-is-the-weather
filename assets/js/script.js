@@ -1,6 +1,6 @@
 var APIKey = "3ea4d2de1606fec8c25abcf7659af663";
 var cities = [];
-var currentCity;
+var city = "Detroit";
 
 var tableBody = document.getElementById("past-cities")
 var searchHistory = JSON.parse(localStorage.getItem(cities))
@@ -9,6 +9,7 @@ $(document).ready(function() {
   if (cities !== null) {
     cities = searchHistory || [];
   }
+  getWeather(city);
 });
 
 function savedCities() {
@@ -82,11 +83,11 @@ function getWeather() {
     .then(function(data) {
       var uvIndex = data.value;
 
-      if(uvIndex <= 2) {
+      if(uvIndex <= 3) {
           $("#todaysWeather").addClass("low")
-      } else if(3 < uvIndex <= 6) {
+      } else if(3 < uvIndex <= 7) {
         $("#todaysWeather").addClass("moderate")
-      } else if(uvIndex >= 7) {
+      } else if(uvIndex > 7) {
         $("#todaysWeather").addClass("extreme")
       }
 

@@ -37,8 +37,9 @@ p {
 }
 
 #todaysWeather {
-  outline: solid 1px var(--navy);
+  border: solid 1px var(--navy);
   padding: 10px
+  border-radius: 5px;
 }
 
 .low {
@@ -49,12 +50,6 @@ p {
 
 .moderate {
   background-color: yellow;
-  border-radius: 3px;
-  color: var(--white);
-}
-
-.high {
-  background-color: orange;
   border-radius: 3px;
   color: var(--white);
 }
