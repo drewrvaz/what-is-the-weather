@@ -19,7 +19,6 @@ function savedCities() {
 function clearCity() {
   $(".card-deck").empty();
   $("#todaysWeather").empty();
-  // $("#past-cities").empty();
 }
  
 $("#searchBtn").on("click", function(event) {
